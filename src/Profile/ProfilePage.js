@@ -11,11 +11,11 @@ function ProfilePage(){
   const [ userData, setUserData ] = useState({shortenedUrls: [{id: ''}]})
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [count, setCount] = useState(-1)
-  const navigate = useNavigate();
-  let num = userData.shortenedUrls.length-1
+
+  let num = userData.shortenedUrls.length - 1
 
   useEffect(() => {
-    const URL = `http://localhost:4000/users/${userInfo.userId}`;
+    const URL = `https://shortly-b.herokuapp.com/users/${userInfo.userId}`;
     const CONFIG = { headers: { 'Authorization': `Bearer ${userInfo.token}` }};
     const promise = axios.get(URL,CONFIG);
     
@@ -26,10 +26,12 @@ function ProfilePage(){
     promise.catch(err => console.log(err.response.data))
   }, [count])
 
+  console.log(userData)
+
   function createLink(e){
     e.preventDefault();
 
-    const URL = 'http://localhost:4000/urls/shorten';
+    const URL = 'https://shortly-b.herokuapp.com/urls/shorten';
     const CONFIG = { headers: { 'Authorization': `Bearer ${userInfo.token}` }};
     const promise = axios.post(URL, link, CONFIG);
 
@@ -45,8 +47,6 @@ function ProfilePage(){
     });
   };
 
-  console.log(userData)
-
   return(
     <Main>
       <Form onSubmit={createLink}>
@@ -54,7 +54,7 @@ function ProfilePage(){
         <button type="submit">Encurtar</button>
       </Form>
       {
-        userData[0] !== '' ?
+        count !== -1 ?
         userData.shortenedUrls.map(url => {
           return <ShortenedUrl url = {url} userInfo ={userInfo} setCount = {setCount} count={count}num ={num}/>
         })

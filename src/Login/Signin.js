@@ -13,7 +13,7 @@ function Signin(){
   function sendData(e){
     e.preventDefault();
 
-    const URL = 'http://localhost:4000/signin';
+    const URL = 'https://shortly-b.herokuapp.com/signin';
 
     const promise = axios.post(URL, userData);
 

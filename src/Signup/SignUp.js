@@ -17,7 +17,7 @@ function SignUp(){
       return;
     }
 
-    const URL = 'http://localhost:4000/signup';
+    const URL = 'https://shortly-b.herokuapp.com/signup';
 
     const promise = axios.post(URL, userData);
 

@@ -7,7 +7,7 @@ function ShortenedUrl({url, userInfo, setCount, count, num}){
   function deleteLink(e){
     e.preventDefault();
 
-    const URL = `http://localhost:4000/urls/${url.id}`;
+    const URL = `https://shortly-b.herokuapp.com/urls/${url.id}`;
     const CONFIG = { headers: { 'Authorization': `Bearer ${userInfo.token}`}};
     const promise = axios.delete(URL, CONFIG);
 
@@ -19,7 +19,7 @@ function ShortenedUrl({url, userInfo, setCount, count, num}){
   function goToUrl(e){
     e.preventDefault();
 
-    const URL = `http://localhost:4000/urls/open/${url.shortUrl}`;
+    const URL = `https://shortly-b.herokuapp.com/urls/open/${url.shortUrl}`;
     const promise = axios.get(URL);
 
     promise.then(window.location.replace(url.url));
@@ -45,7 +45,6 @@ const Link = styled.div`
   width: 90%;
   height: 70px;
   border-radius: 8px;
-  padding: 0 15px;
   align-items:center;
   position:relative;
   font-size: 13px;

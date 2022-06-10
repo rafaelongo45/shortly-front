@@ -6,7 +6,7 @@ import RenderRanking from "./RenderRanking";
 function Ranking(){
   const [ ranking, setRanking ] = useState([''])
 
-  const URL = 'http://localhost:4000/ranking';
+  const URL = 'https://shortly-b.herokuapp.com/ranking';
 
   useEffect(() => {
     const promise = axios.get(URL);
