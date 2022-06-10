@@ -13,6 +13,7 @@ function ProfilePage(){
   const [count, setCount] = useState(0);
 
   let num = userData.shortenedUrls.length;
+  console.log('sou num',num)
 
   useEffect(() => {
     const URL = `https://shortly-b.herokuapp.com/users/${userInfo.userId}`;
@@ -53,7 +54,7 @@ function ProfilePage(){
         <button type="submit">Encurtar</button>
       </Form>
       {
-        count !== -1 ?
+        count !== 0 ?
         userData.shortenedUrls.map(url => {
           return <ShortenedUrl url = {url} userInfo ={userInfo} setCount = {setCount} count={count}num ={num}/>
         })
