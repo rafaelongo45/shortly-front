@@ -6,7 +6,6 @@ import HeaderSignedIn from "./HeaderSignedIn";
 
 function RenderHeader(){  
   const { userInfo } = useContext(UserContext);
-  console.log(userInfo)
 
   return userInfo.token ? <HeaderSignedIn /> : <HeaderNotSignedIn />
 };

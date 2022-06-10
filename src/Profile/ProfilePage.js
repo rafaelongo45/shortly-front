@@ -10,9 +10,9 @@ function ProfilePage(){
   const [ link, setLink ] = useState({url: ''})
   const [ userData, setUserData ] = useState({shortenedUrls: [{id: ''}]})
   const { setUserInfo, userInfo } = useContext(UserContext);
-  const [count, setCount] = useState(-1)
+  const [count, setCount] = useState(0);
 
-  let num = userData.shortenedUrls.length - 1
+  let num = userData.shortenedUrls.length;
 
   useEffect(() => {
     const URL = `https://shortly-b.herokuapp.com/users/${userInfo.userId}`;
@@ -21,12 +21,11 @@ function ProfilePage(){
     
     promise.then(response => {
       setUserData(response.data);
+      setCount(num);
     });
 
     promise.catch(err => console.log(err.response.data))
   }, [count])
-
-  console.log(userData)
 
   function createLink(e){
     e.preventDefault();
