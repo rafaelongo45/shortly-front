@@ -1,0 +1,17 @@
+*{
+  box-sizing: border-box;
+  font-family: 'Lexend Deca';
+}
+
+html{
+  min-height: 100%;
+}
+
+body{
+  min-height: 100%;
+}
+
+.root{
+  min-height: 100%;
+  background-color: rgb(254,254,250);
+}
